@@ -2,6 +2,16 @@
 
 import tkinter as tk
 import mysql.connector
+from tkinter import messagebox
+
+def submitact():
+
+    user = get_name.get()
+    passw = get_pass.get()
+
+    print(f"The name entered by you is {user} {passw}")
+
+    logintodb(user, passw)
 
 def logintodb(user, passw):
 
@@ -39,23 +49,32 @@ def logintodb(user, passw):
         db.rollback()
         print("Error occured")
 
+def register():
+    messagebox.showinfo("You have chosen to register as a new user. You may proceed.")
+    root.destroy()
+    import register
+def exit():
+    root.destroy()
+
 # initializing tkinter
 root = tk.Tk()
 root.title("The Log Connect")
 root.geometry("775x426")
 root.config(bg="peach puff")
 
-font_stylize = ("Verdana",11)
-
+#personalized font
+font_stylize = ("Georgia",12)
+#structure of the form
 usernname = tk.Label(root, text = "Please input username",font=font_stylize).grid(column = 1,row = 3)
 get_name = tk.Entry(root).grid(column=3,row=3)
 
 password = tk.Label(root, text = "Please input password",font=font_stylize).grid(column=1,row=4)
 get_pass = tk.Entry(root).grid(column=3,row=4)
 
-#the button
-play = tk.Button(root,text = "Login",font=font_stylize,bg="coral").grid(column=2,row=12)
-register_user = tk.Button(root, text ="Register New User", font=font_stylize, bg="coral",command=logintodb).grid(column=3, row=12)
+#the buttons
+play = tk.Button(root,text = "Login",font=font_stylize,bg="coral",command=logintodb).grid(column=2,row=12)
+register_user = tk.Button(root, text ="Register New User", font=font_stylize, bg="coral",command=lambda submitact:logintodb).grid(column=3, row=12)
+exit = tk.Button(root, text = "Exit", font=font_stylize, bg="coral",command=exit).grid(column=2,row=14)
 
 #starting the form
 root.mainloop()
