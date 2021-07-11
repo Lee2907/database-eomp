@@ -73,8 +73,10 @@ get_pass = tk.Entry(root).grid(column=3,row=4)
 
 #the buttons
 play = tk.Button(root,text = "Login",font=font_stylize,bg="coral",command=logintodb).grid(column=2,row=12)
-register_user = tk.Button(root, text ="Register New User", font=font_stylize, bg="coral",command=lambda submitact:logintodb).grid(column=3, row=12)
+register_user = tk.Button(root, text ="Register New User", font=font_stylize, bg="coral",command=lambda submitact:logintodb).grid(column=4, row=12)
+admin_log = tk.Button(root, text = "Log In As Admin",font=font_stylize,bg="coral").grid(column=3,row=12)
 exit = tk.Button(root, text = "Exit", font=font_stylize, bg="coral",command=exit).grid(column=2,row=14)
+
 
 #starting the form
 root.mainloop()
